@@ -1,8 +1,8 @@
-// Sélection des éléments
-const burgerMenu = document.querySelector('.burger-menu');
-const navLinks = document.querySelector('.nav-links');
+document.addEventListener("DOMContentLoaded", function () {
+        const burgerMenu = document.querySelector(".burger-menu");
+        const navLinks = document.querySelector(".nav-links");
 
-// Ajouter l'événement pour ouvrir/fermer le menu
-burgerMenu.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-});
+        burgerMenu.addEventListener("click", function () {
+            navLinks.classList.toggle("open");
+        });
+    });

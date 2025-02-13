@@ -30,7 +30,7 @@ p {
 header {
     background: #333;
     color: #fff;
-    padding: 1rem 0;
+    padding: 1.6rem 0;
 }
 
 /* Footer Styles */
@@ -104,7 +104,7 @@ header h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('ressources/banniere.jpg'); /* Remplacez 'cover.jpg' par votre image */
+    background-image: url('ressources/IMG_2318.JPG'); /* Remplacez 'cover.jpg' par votre image */
     background-size: cover;
     background-position: center;
     filter: blur(4px);
@@ -191,35 +191,42 @@ h2 {
 /* Mobile Navigation */
 .nav-links {
     list-style: none;
-    display: flex;
+    display: none; /* Caché par défaut */
     gap: 1rem;
     margin: 0;
     padding: 0;
+    position: absolute;
+    top: 50px; /* Ajuste selon ton header */
+    right: 0;
+    background: #333;
+    width: 200px; /* Ajuste la largeur si besoin */
+    padding: 1rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 }
 
 .nav-links.open {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: #333;
-    padding: 1rem;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 2;
+    align-items: flex-start; /* Aligner les liens à gauche */
 }
 
+/* Ajuste les liens pour être bien lisibles */
 .nav-links a {
-    color: #fff;
+    color: white;
     text-decoration: none;
-    padding: 0.5rem;
-    display: block;
+    padding: 10px;
+    width: 100%;
 }
 
 /* Cache les liens par défaut sur mobile */
 @media (max-width: 768px) {
     .burger-menu {
         display: flex;
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        z-index: 1001;
     }
 
     .nav-links {
@@ -228,6 +235,21 @@ h2 {
 
     .nav-links.open {
         display: flex;
+    }
+}
+
+@media (min-width: 769px) {
+    .nav-links {
+        display: flex !important; /* Affiche le menu en mode PC */
+        position: static; /* Enlève le positionnement absolu */
+        background: none; /* Pas de fond en mode PC */
+        width: auto; /* Taille normale */
+        padding: 0;
+        box-shadow: none; /* Supprime l'ombre */
+    }
+
+    .burger-menu {
+        display: none; /* Cache le bouton burger en mode PC */
     }
 }
 
@@ -249,6 +271,35 @@ h2 {
 
 .gallery-grid img:hover {
     transform: scale(1.05);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 /* Section Mensurations */

@@ -6,7 +6,11 @@
     <title>Jeremy POUCH - Galerie</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="ressources/logo.ico">
 </head>
+
+<script src="script.js"></script>
+
 <body>
     <header>
         <div class="container">
@@ -28,15 +32,55 @@
     <main>
         <section id="gallery" class="container">
             <h2>Galerie</h2>
-            <div class="gallery-grid">
-                <img src="photo1.jpg" alt="Photo 1">
-                <img src="photo2.jpg" alt="Photo 2">
-                <img src="photo3.jpg" alt="Photo 3">
-                <img src="photo4.jpg" alt="Photo 4">
-                <img src="photo5.jpg" alt="Photo 5">
-            </div>
+            <div class="gallery-grid" id="gallery-grid"></div>
         </section>
     </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const gallery = document.getElementById("gallery-grid");
+            const imageCount = 1000; // Nombre d'images max
+    
+            for (let i = 1; i <= imageCount; i++) {
+                const img = document.createElement("img");
+                img.src = `ressources/galerie/photo (${i}).JPG`;
+                img.alt = `Photo ${i}`;
+                img.classList.add("gallery-img");
+                img.onerror = function () {
+                    this.remove(); // Supprime l'image si elle n'existe pas
+                };
+                img.onclick = function () {
+                    openModal(this.src);
+                };
+                gallery.appendChild(img);
+            }
+    
+            // Gestion de la modale
+            const modal = document.getElementById("image-modal");
+            const modalImg = document.getElementById("modal-img");
+            const closeModal = document.querySelector(".close");
+    
+            function openModal(src) {
+                modal.style.display = "flex";
+                modalImg.src = src;
+            }
+    
+            closeModal.onclick = function () {
+                modal.style.display = "none";
+            };
+    
+            modal.onclick = function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none"; // Ferme la modale si on clique en dehors de l'image
+                }
+            };
+        });
+    </script>    
+
+    <div id="image-modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
 
     <footer>
         <p>&copy; 2024 Jeremy POUCH. Tous droits réservés.</p>
