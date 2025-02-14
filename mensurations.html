@@ -53,7 +53,7 @@
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const gallery = document.getElementById("gallery-grid");
-                const imageCount = 100; // Nombre d'images max
+                const imageCount = 50;
         
                 for (let i = 1; i <= imageCount; i++) {
                     const img = document.createElement("img");
@@ -61,7 +61,7 @@
                     img.alt = `Photo ${i}`;
                     img.classList.add("gallery-img");
                     img.onerror = function () {
-                        this.remove(); // Supprime l'image si elle n'existe pas
+                        this.remove();
                     };
                     img.onclick = function () {
                         openModal(this.src);
@@ -69,7 +69,6 @@
                     gallery.appendChild(img);
                 }
         
-                // Gestion de la modale
                 const modal = document.getElementById("image-modal");
                 const modalImg = document.getElementById("modal-img");
                 const closeModal = document.querySelector(".close");
@@ -85,7 +84,7 @@
         
                 modal.onclick = function (event) {
                     if (event.target === modal) {
-                        modal.style.display = "none"; // Ferme la modale si on clique en dehors de l'image
+                        modal.style.display = "none";
                     }
                 };
             });

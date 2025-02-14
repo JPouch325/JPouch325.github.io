@@ -1,364 +1,62 @@
-/* Global Styles */
-body {
-    font-family: 'Quicksand', sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    color: #333;
-    background-color: #f9f9f9;
-}
+/*
+GLOBAL
+*/
 
-/* Grands et moyens titres avec Montserrat en gras */
-h1, h2, h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-}
+body { font-family: 'Quicksand', sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; background-color: #f9f9f9; }  
+h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: bold; }  
+p, li, a { font-family: 'Quicksand', sans-serif; font-weight: 300; }  
+p { font-size: 1.2rem; line-height: 1.8; }  
+header { background: #333; color: #fff; padding: 1.6rem 0; }  
+footer { background: #333; color: #fff; text-align: center; padding: 1rem 0; position: relative; bottom: 0; width: 100%; }  
+footer p { margin: 0.5rem 0; font-size: 0.9rem; line-height: 1.5; }  
+header .container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }  
+header h1 { font-size: 1.8rem; }  
+.nav-links { list-style: none; display: flex; gap: 1rem; margin: 0; padding: 0; }  
+.nav-links a { font-family: 'Montserrat', sans-serif; font-weight: bold; color: #fff; text-decoration: none; display: inline-block; padding: 0.5rem 1rem; border-radius: 5px; transition: all 0.3s ease; }  
+.nav-links a:hover { background-color: white; color: black; box-sizing: border-box; }  
+.hero { position: relative; width: 100%; height: 50vh; overflow: hidden; }  
+.hero-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('ressources/banniere.jpg'); background-size: cover; background-position: center; filter: blur(5px); transform: scale(1.1); z-index: 1; }  
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 2; }  
+.hero-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center; z-index: 3; }  
+.hero-text h1 { font-size: 3rem; font-weight: bold; text-shadow: none; background-color: rgba(169, 169, 169, 0.2); padding: 0.5rem; border-radius: 5px; }  
+.container { max-width: 1200px; margin: 2rem auto; padding: 1rem; }  
+h2 { margin-top: 1.5rem; color: #333; text-align: center; }  
+#about, #contact { text-align: left; margin-bottom: 2rem; }  
+#projects .project-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }  
+.project { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 1rem; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); opacity: 0; transform: translateY(50px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }  
+.project.show { opacity: 1; transform: translateY(0); }  
+.burger-menu { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; z-index: 3; }  
+.burger-menu.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }  
+.burger-menu.open span:nth-child(2) { opacity: 0; }  
+.burger-menu.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }  
+.burger-menu span { display: block; width: 25px; height: 3px; background: white; border-radius: 3px; }  
+.nav-links { list-style: none; display: none; gap: 1rem; margin: 0; padding: 0; position: absolute; top: 50px; right: 0; background: #333; width: 200px; padding: 1rem; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); z-index: 1000; }  
+.nav-links.open { display: flex; flex-direction: column; align-items: flex-start; }  
+.nav-links a { color: white; text-decoration: none; padding: 10px; width: 100%; }  
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }  
+.gallery-grid img { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease; }  
+.gallery-grid img:hover { transform: scale(1.05); }  
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; }  
+.modal-content { max-width: 90%; max-height: 90%; border-radius: 8px; }  
+.close { position: absolute; top: 15px; right: 30px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; }  
+.mensurations { text-align: center; padding: 2rem; }  
+.mensurations h2 { font-size: 2rem; font-weight: bold; margin-bottom: 1.5rem; }  
+.mensurations ul { list-style: none; padding: 0; }  
+.mensurations li { font-size: 1.2rem; margin: 0.5rem 0; font-family: 'Quicksand', sans-serif; } 
 
-/* Texte normal (p, li, etc.) avec Quicksand semi-fin */
-p, li, a {
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 300; /* Semi-fin */
-}
+/*
+PC
+*/
+@media (min-width: 1025px) { 
+    .nav-links { display: flex !important; position: static; background: none; width: auto; padding: 0; box-shadow: none; } 
+    .burger-menu { display: none; } 
+}  
 
-/* Augmenter la taille de la police pour les paragraphes */
-p {
-    font-size: 1.2rem; /* Ajuste cette valeur à ta convenance */
-    line-height: 1.8;  /* Pour améliorer la lisibilité */
-}
-
-/* Header Styles */
-header {
-    background: #333;
-    color: #fff;
-    padding: 1.6rem 0;
-}
-
-/* Footer Styles */
-footer {
-    background: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-footer p {
-    margin: 0.5rem 0;
-    font-size: 0.9rem;
-    line-height: 1.5;
-}
-
-
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-header h1 {
-    font-size: 1.8rem;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links a {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    color: #fff;  /* Assure-toi que le texte reste blanc */
-    text-decoration: none;
-    display: inline-block;  /* Assure que les liens se comportent comme des blocs */
-    padding: 0.5rem 1rem;   /* Pour un bon espacement */
-    border-radius: 5px;      /* Arrondi des coins */
-    transition: all 0.3s ease; /* Animation douce */
-}
-
-/* Effet sur le survol des boutons du menu */
-.nav-links a:hover {
-    background-color: white;  /* Fond blanc au survol */
-    color: black;             /* Texte noir au survol */
-    box-sizing: border-box;   /* Évite le décalage en ajustant le box-sizing */
-}
-
-/* Hero Section */
-.hero {
-    position: relative;
-    width: 100%;
-    height: 50vh;
-    overflow: hidden;
-}
-
-.hero-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('ressources/banniere.jpg'); /* Remplacez 'cover.jpg' par votre image */
-    background-size: cover;
-    background-position: center;
-    filter: blur(5px);
-    transform: scale(1.1); /* Évite le bord blanc */
-    z-index: 1;
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Noir avec opacité */
-    z-index: 2;
-}
-
-.hero-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    text-align: center;
-    z-index: 3;
-}
-
-.hero-text h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    text-shadow: none;
-    background-color: rgba(169, 169, 169, 0.2); /* Gris léger avec une transparence de 20% */
-    padding: 0.5rem; /* Ajoute de l'espace autour du texte */
-    border-radius: 5px; /* Optionnel, pour arrondir les coins du fond */
-}
-
-/* Content Styles */
-.container {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 1rem;
-}
-
-h2 {
-    margin-top: 1.5rem;
-    color: #333;
-    text-align: center;
-}
-
-#about, #contact {
-    text-align: left;
-    margin-bottom: 2rem;
-}
-
-#projects .project-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-}
-
-.project {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.project.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .hero-text h1 {
-        font-size: 2rem;
-    }
-
-    .container {
-        max-width: 80%;
-    }
-}
-
-/* Burger Menu */
-.burger-menu {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 3;
-}
-
-/* Animation pour la croix */
-.burger-menu.open span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-
-.burger-menu.open span:nth-child(2) {
-    opacity: 0;
-}
-
-.burger-menu.open span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-}
-
-.burger-menu span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background: white;
-    border-radius: 3px;
-}
-
-/* Mobile Navigation */
-.nav-links {
-    list-style: none;
-    display: none; /* Caché par défaut */
-    gap: 1rem;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    top: 50px; /* Ajuste selon ton header */
-    right: 0;
-    background: #333;
-    width: 200px; /* Ajuste la largeur si besoin */
-    padding: 1rem;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
-
-.nav-links.open {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Aligner les liens à gauche */
-}
-
-/* Ajuste les liens pour être bien lisibles */
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    width: 100%;
-}
-
-/* Cache les liens par défaut sur mobile */
-@media (max-width: 768px) {
-    .burger-menu {
-        display: flex;
-        position: absolute;
-        top: 15px;
-        right: 20px;
-        z-index: 1001;
-    }
-
-    .nav-links {
-        display: none;
-    }
-
-    .nav-links.open {
-        display: flex;
-    }
-}
-
-@media (min-width: 769px) {
-    .nav-links {
-        display: flex !important; /* Affiche le menu en mode PC */
-        position: static; /* Enlève le positionnement absolu */
-        background: none; /* Pas de fond en mode PC */
-        width: auto; /* Taille normale */
-        padding: 0;
-        box-shadow: none; /* Supprime l'ombre */
-    }
-
-    .burger-menu {
-        display: none; /* Cache le bouton burger en mode PC */
-    }
-}
-
-/* Galerie Styles */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem; /* Ajoute un espace en bas */
-}
-
-.gallery-grid img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.gallery-grid img:hover {
-    transform: scale(1.05);
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 8px;
-}
-
-.close {
-    position: absolute;
-    top: 15px;
-    right: 30px;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* Section Mensurations */
-.mensurations {
-    text-align: center;
-    padding: 2rem;
-}
-
-.mensurations h2 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-}
-
-.mensurations ul {
-    list-style: none;
-    padding: 0;
-}
-
-.mensurations li {
-    font-size: 1.2rem;
-    margin: 0.5rem 0;
-    font-family: 'Quicksand', sans-serif;
-}
-
-
+/*
+TÉLÉPHONE
+*/
+@media (max-width: 1024px) { 
+    .hero-text h1 { font-size: 2rem; }
+    .container { max-width: 80%; }
+    .burger-menu { display: flex; position: absolute; top: 15px; right: 20px; z-index: 1001; } .nav-links { display: none; } .nav-links.open { display: flex; } 
+}  
