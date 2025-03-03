@@ -43,62 +43,17 @@
                 <li>Longueur main gauche: 20cm</li>
                 <li>Tour de cou: 41cm</li>
             </ul>
+            <p>
+                Mensurations prises le <b>14 octobre 2024</b>.
+            </p>
+            <p>
+                Si vous avez besoin d'informations complémentaires, vous pouvez me contacter à l'adresse suivante : <a href="mailto:jeremypouc19@gmail.com">jeremypouc19@gmail.com</a>
+            </p>
         </section>
-
-        <section id="gallery" class="container">
-            <h2>Galerie</h2>
-            <div class="gallery-grid" id="gallery-grid"></div>
-        </section>
-    
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const gallery = document.getElementById("gallery-grid");
-                const imageCount = 50;
-        
-                for (let i = 1; i <= imageCount; i++) {
-                    const img = document.createElement("img");
-                    img.src = `ressources/galerie/photo (${i}).JPG`;
-                    img.alt = `Photo ${i}`;
-                    img.classList.add("gallery-img");
-                    img.onerror = function () {
-                        this.remove();
-                    };
-                    img.onclick = function () {
-                        openModal(this.src);
-                    };
-                    gallery.appendChild(img);
-                }
-        
-                const modal = document.getElementById("image-modal");
-                const modalImg = document.getElementById("modal-img");
-                const closeModal = document.querySelector(".close");
-        
-                function openModal(src) {
-                    modal.style.display = "flex";
-                    modalImg.src = src;
-                }
-        
-                closeModal.onclick = function () {
-                    modal.style.display = "none";
-                };
-        
-                modal.onclick = function (event) {
-                    if (event.target === modal) {
-                        modal.style.display = "none";
-                    }
-                };
-            });
-        </script> 
-
-        <div id="image-modal" class="modal">
-            <span class="close">&times;</span>
-            <img class="modal-content" id="modal-img">
-        </div>
     </main>
 
     <footer>
         <p>&copy; 2024 Jeremy POUCH. Tous droits réservés.</p>
-        <p>Développé par Clément FARFAIT</p>
     </footer>
 
     <script src="script.js"></script>
