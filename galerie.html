@@ -103,12 +103,12 @@
         img.loading = "lazy";
 
         img.onerror = function () {
-          if (this.src.endsWith(".jpg")) {
+        if (id === "shooting-douce-france" && this.src.endsWith(".jpg")) {
             this.src = this.dataset.altjpeg;
             this.dataset.full = this.dataset.fulljpeg;
-          } else {
+        } else {
             this.remove();
-          }
+        }
         };
 
         img.onclick = function () { openModal(this.dataset.full); };
