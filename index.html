@@ -78,7 +78,6 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-    // Sélectionne tous les paragraphes, projets et contact
     const targets = document.querySelectorAll(".container p, .project, #contact p");
 
     const observer = new IntersectionObserver((entries, obs) => {
@@ -86,13 +85,13 @@
         if(entry.isIntersecting){
             entry.target.classList.add("fade-in-visible");
             entry.target.classList.remove("hidden");
-            obs.unobserve(entry.target); // plus besoin de réobserver
+            obs.unobserve(entry.target);
         }
         });
     }, { threshold: 0.2 });
 
     targets.forEach(el => {
-        el.classList.add("hidden"); // cache le contenu au départ
+        el.classList.add("hidden");
         observer.observe(el);
     });
     });
