@@ -1,89 +1,146 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeremy POUCH - Galerie</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@300&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="ressources/logo.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeremy POUCH - Galerie</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@300&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="ressources/logo.ico">
 </head>
-
-<script src="script.js"></script>
-
 <body>
-    <header>
-        <div class="container">
-            <nav>
-                <button class="burger-menu" aria-label="Ouvrir le menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul class="nav-links">
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="#gallery">Galerie</a></li>
-                    <li><a href="mensurations.html">Mensurations</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <main>
-        <section id="gallery" class="container">
-            <h2>Galerie</h2>
-            <div class="gallery-grid" id="gallery-grid"></div>
-        </section>
-    </main>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const gallery = document.getElementById("gallery-grid");
-            const imageCount = 100;
-    
-            for (let i = 1; i <= imageCount; i++) {
-                const img = document.createElement("img");
-                img.src = `ressources/galerie/photo (${i}).jpg`;
-                img.alt = `Photo ${i}`;
-                img.classList.add("gallery-img");
-                img.onerror = function () {
-                    this.remove();
-                };
-                img.onclick = function () {
-                    openModal(this.src);
-                };
-                gallery.appendChild(img);
-            }
-    
-            const modal = document.getElementById("image-modal");
-            const modalImg = document.getElementById("modal-img");
-            const closeModal = document.querySelector(".close");
-    
-            function openModal(src) {
-                modal.style.display = "flex";
-                modalImg.src = src;
-            }
-    
-            closeModal.onclick = function () {
-                modal.style.display = "none";
-            };
-    
-            modal.onclick = function (event) {
-                if (event.target === modal) {
-                    modal.style.display = "none";
-                }
-            };
-        });
-    </script>    
-
-    <div id="image-modal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modal-img">
+  <!-- HEADER -->
+  <header class="hero small-hero">
+    <video autoplay muted loop playsinline class="hero-video">
+      <source src="ressources/video.mp4" type="video/mp4">
+      Votre navigateur ne supporte pas la vidéo de fond.
+    </video>
+    <div class="overlay"></div>
+    <nav class="navbar">
+      <div class="logo">Jeremy POUCH</div>
+      <button class="burger-menu" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="#gallery">Galerie</a></li>
+        <li><a href="mensurations.html">Mensurations</a></li>
+      </ul>
+    </nav>
+    <div class="hero-text">
+      <h1>Galerie</h1>
+      <p>Découvrez mes shootings</p>
     </div>
+  </header>
 
-    <footer>
-        <p>&copy; 2024 Jeremy POUCH. Tous droits réservés.</p>
-    </footer>
-    
+  <!-- MAIN -->
+  <main>
+    <section id="gallery" class="container fade-in">
+      <h2>Mes shootings</h2>
+
+      <div class="shooting">
+        <h3>Shooting Brive</h3>
+        <div class="gallery-grid" id="shooting-brive"></div>
+      </div>
+
+      <div class="shooting">
+        <h3>Shooting Studio</h3>
+        <div class="gallery-grid" id="shooting-studio"></div>
+      </div>
+
+      <div class="shooting">
+        <h3>Shooting « Du lin et du coton »</h3>
+        <div class="gallery-grid" id="shooting-limoges"></div>
+      </div>
+
+      <div class="shooting">
+        <h3>Shooting « Douce France »</h3>
+        <div class="gallery-grid" id="shooting-douce-france"></div>
+      </div>
+
+      <div class="shooting">
+        <h3>Shooting « Monde de la nuit »</h3>
+        <div class="gallery-grid" id="shooting-boite"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL -->
+  <div id="image-modal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modal-img">
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2024 Jeremy POUCH. Tous droits réservés.</p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const shootings = {
+      "shooting-brive": { path: "ressources/galerie/brive", prefix: "brive", count: 8 },
+      "shooting-studio": { path: "ressources/galerie/studio", prefix: "studio", count: 21 },
+      "shooting-limoges": { path: "ressources/galerie/limoges", prefix: "limoges", count: 60 },
+      "shooting-douce-france": { path: "ressources/galerie/douce_france", prefix: "douce_france", count: 48 },
+      "shooting-boite": { path: "ressources/galerie/boite", prefix: "boite", count: 26 }
+    };
+
+    for (const [id, { path, prefix, count }] of Object.entries(shootings)) {
+      const gallery = document.getElementById(id);
+
+      for (let i = 1; i <= count; i++) {
+        const img = document.createElement("img");
+        img.src = `${path}/thumbs/${prefix} (${i}).jpg`;
+        img.dataset.full = `${path}/${prefix} (${i}).jpg`;
+        img.dataset.altjpeg = `${path}/thumbs/${prefix} (${i}).jpeg`;
+        img.dataset.fulljpeg = `${path}/${prefix} (${i}).jpeg`;
+        img.alt = `${prefix} ${i}`;
+        img.classList.add("gallery-img", "hidden");
+        img.loading = "lazy";
+
+        img.onerror = function () {
+          if (this.src.endsWith(".jpg")) {
+            this.src = this.dataset.altjpeg;
+            this.dataset.full = this.dataset.fulljpeg;
+          } else {
+            this.remove();
+          }
+        };
+
+        img.onclick = function () { openModal(this.dataset.full); };
+        gallery.appendChild(img);
+      }
+    }
+
+    // Scroll fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("fade-in");
+          entry.target.classList.remove("hidden");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll(".gallery-img").forEach(img => observer.observe(img));
+
+    // Modal
+    const modal = document.getElementById("image-modal");
+    const modalImg = document.getElementById("modal-img");
+    const closeModal = document.querySelector(".close");
+
+    function openModal(src) {
+      modal.style.display = "flex";
+      modalImg.src = src;
+    }
+    closeModal.onclick = () => modal.style.display = "none";
+    modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+  });
+  </script>
 </body>
 </html>

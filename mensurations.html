@@ -1,61 +1,70 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeremy POUCH - Mensurations</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@300&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="ressources/logo.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeremy POUCH - Mensurations</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@300&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="ressources/logo.ico">
 </head>
-
 <body>
-    <header>
-        <div class="container">
-            <nav>
-                <button class="burger-menu" aria-label="Ouvrir le menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul class="nav-links">
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="galerie.html">Galerie</a></li>
-                    <li><a href="mensurations.html">Mensurations</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <main>
-        <section class="mensurations">
-            <h2>Mes mensurations</h2>
-            <ul>
-                <li>Taille: 1.84m</li>
-                <li>Bras gauche: 35.5cm</li>
-                <li>Bras droit: 36cm</li>
-                <li>Cuisse gauche: 54.5cm</li>
-                <li>Cuisse droite: 54.5cm</li>
-                <li>Tour de taille: 90cm</li>
-                <li>Largeur d'épaules: 54cm</li>
-                <li>Taille de pieds: 45-46cm</li>
-                <li>Longueur main droite: 20cm</li>
-                <li>Longueur main gauche: 20cm</li>
-                <li>Tour de cou: 41cm</li>
-            </ul>
-            <p>
-                Mensurations prises le <b>14 octobre 2024</b>.
-            </p>
-            <p>
-                Si vous avez besoin d'informations complémentaires, vous pouvez me contacter à l'adresse suivante : <a href="mailto:jeremypouc19@gmail.com">jeremypouc19@gmail.com</a>
-            </p>
-        </section>
-    </main>
+  <!-- HEADER -->
+  <header class="hero small-hero">
+    <video autoplay muted loop playsinline class="hero-video">
+      <source src="ressources/video.mp4" type="video/mp4">
+      Votre navigateur ne supporte pas la vidéo de fond.
+    </video>
+    <div class="overlay"></div>
+    <nav class="navbar">
+      <div class="logo">Jeremy POUCH</div>
+      <button class="burger-menu" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="mensurations.html">Mensurations</a></li>
+      </ul>
+    </nav>
+    <div class="hero-text">
+      <h1>Mes mensurations</h1>
+      <p>Détails précis et complets</p>
+    </div>
+  </header>
 
-    <footer>
-        <p>&copy; 2024 Jeremy POUCH. Tous droits réservés.</p>
-    </footer>
+  <!-- MAIN -->
+  <main>
+    <section class="mensurations container fade-in">
+      <h2>Mes mensurations</h2>
+      <ul class="mensuration-list">
+        <li><span class="label">Taille:</span> 1.84m</li>
+        <li><span class="label">Bras gauche:</span> 35.5cm</li>
+        <li><span class="label">Bras droit:</span> 36cm</li>
+        <li><span class="label">Cuisse gauche:</span> 54.5cm</li>
+        <li><span class="label">Cuisse droite:</span> 54.5cm</li>
+        <li><span class="label">Tour de taille:</span> 90cm</li>
+        <li><span class="label">Largeur d'épaules:</span> 54cm</li>
+        <li><span class="label">Taille de pieds:</span> 45-46cm</li>
+        <li><span class="label">Longueur main droite:</span> 20cm</li>
+        <li><span class="label">Longueur main gauche:</span> 20cm</li>
+        <li><span class="label">Tour de cou:</span> 41cm</li>
+      </ul>
+      <p class="note">
+        Mensurations prises le <b>14 octobre 2024</b>.
+      </p>
+      <p class="contact">
+        Pour plus d'informations, contactez-moi : <a href="mailto:contact@jeremypouch.fr">contact@jeremypouch.fr</a>
+      </p>
+    </section>
+  </main>
 
-    <script src="script.js"></script>
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2024 Jeremy POUCH. Tous droits réservés.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
