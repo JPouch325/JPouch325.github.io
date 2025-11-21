@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@300&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="ressources/logo.ico">
 </head>
+
 <body>
 
   <!-- HEADER -->
@@ -39,30 +40,56 @@
     <section id="gallery" class="container fade-in">
       <h2>Mes shootings</h2>
 
-      <div class="shooting">
-        <h3>Shooting « Street »</h3>
-        <div class="gallery-grid" id="shooting-brive"></div>
+      <div class="shooting-wrapper">
+
+        <!-- NAVIGATION -->
+        <nav class="shooting-nav">
+          <ul>
+            <li><a href="#shooting-fall2025">Fall 2025</a></li>
+            <li><a href="#shooting-boite">Monde de la nuit</a></li>
+            <li><a href="#shooting-douce-france">Douce France</a></li>
+            <li><a href="#shooting-limoges">Du lin et du coton</a></li>
+            <li><a href="#shooting-brive">Street</a></li>
+            <li><a href="#shooting-studio">New York</a></li>
+          </ul>
+        </nav>
+
+        <!-- CONTENT -->
+        <div class="shooting-content">
+
+          <div class="shooting" id="shooting-fall2025">
+            <h3>Shooting « Fall 2025 »</h3>
+            <div class="gallery-grid" id="shooting-fall2025-grid"></div>
+          </div>
+
+          <div class="shooting" id="shooting-boite">
+            <h3>Shooting « Monde de la nuit »</h3>
+            <div class="gallery-grid" id="shooting-boite-grid"></div>
+          </div>
+
+          <div class="shooting" id="shooting-douce-france">
+            <h3>Shooting « Douce France »</h3>
+            <div class="gallery-grid" id="shooting-douce-france-grid"></div>
+          </div>
+
+          <div class="shooting" id="shooting-limoges">
+            <h3>Shooting « Du lin et du coton »</h3>
+            <div class="gallery-grid" id="shooting-limoges-grid"></div>
+          </div>
+
+          <div class="shooting" id="shooting-brive">
+            <h3>Shooting « Street »</h3>
+            <div class="gallery-grid" id="shooting-brive-grid"></div>
+          </div>
+
+          <div class="shooting" id="shooting-studio">
+            <h3>Shooting « New York »</h3>
+            <div class="gallery-grid" id="shooting-studio-grid"></div>
+          </div>
+
+        </div>
       </div>
 
-      <div class="shooting">
-        <h3>Shooting « New York »</h3>
-        <div class="gallery-grid" id="shooting-studio"></div>
-      </div>
-
-      <div class="shooting">
-        <h3>Shooting « Du lin et du coton »</h3>
-        <div class="gallery-grid" id="shooting-limoges"></div>
-      </div>
-
-      <div class="shooting">
-        <h3>Shooting « Douce France »</h3>
-        <div class="gallery-grid" id="shooting-douce-france"></div>
-      </div>
-
-      <div class="shooting">
-        <h3>Shooting « Monde de la nuit »</h3>
-        <div class="gallery-grid" id="shooting-boite"></div>
-      </div>
     </section>
   </main>
 
@@ -81,12 +108,14 @@
   <script src="script.js"></script>
   <script>
   document.addEventListener("DOMContentLoaded", function () {
+
     const shootings = {
-      "shooting-brive": { path: "ressources/galerie/brive", prefix: "brive", count: 9 },
-      "shooting-studio": { path: "ressources/galerie/studio", prefix: "studio", count: 20 },
-      "shooting-limoges": { path: "ressources/galerie/limoges", prefix: "limoges", count: 60 },
-      "shooting-douce-france": { path: "ressources/galerie/douce_france", prefix: "douce_france", count: 48 },
-      "shooting-boite": { path: "ressources/galerie/boite", prefix: "boite", count: 26 }
+      "shooting-fall2025-grid": { path: "ressources/galerie/fall2025", prefix: "fall2025", count: 98 },
+      "shooting-brive-grid": { path: "ressources/galerie/brive", prefix: "brive", count: 9 },
+      "shooting-studio-grid": { path: "ressources/galerie/studio", prefix: "studio", count: 20 },
+      "shooting-limoges-grid": { path: "ressources/galerie/limoges", prefix: "limoges", count: 60 },
+      "shooting-douce-france-grid": { path: "ressources/galerie/douce_france", prefix: "douce_france", count: 48 },
+      "shooting-boite-grid": { path: "ressources/galerie/boite", prefix: "boite", count: 26 }
     };
 
     for (const [id, { path, prefix, count }] of Object.entries(shootings)) {
@@ -138,9 +167,37 @@
       modal.style.display = "flex";
       modalImg.src = src;
     }
+
     closeModal.onclick = () => modal.style.display = "none";
     modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+
+  });
+
+  const sections = document.querySelectorAll(".shooting");
+  const navLinks = document.querySelectorAll(".shooting-nav a");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+
+    sections.forEach(sec => {
+      const top = window.scrollY;
+      const offset = sec.offsetTop - 200; // seuil
+      const height = sec.offsetHeight;
+
+      if (top >= offset && top < offset + height) {
+        current = sec.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+
+      if (link.getAttribute("href") === `#${current}`) {
+        link.classList.add("active");
+      }
+    });
   });
   </script>
+
 </body>
 </html>
