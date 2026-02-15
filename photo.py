@@ -1,8 +1,8 @@
 from PIL import Image
 import os
 
-input_folder = "ressources/galerie/fall2025"
-output_folder = "ressources/galerie/fall2025/thumbs"
+input_folder = "ressources/galerie/studio"
+output_folder = "ressources/galerie/studio/thumbs"
 os.makedirs(output_folder, exist_ok=True)
 
 for file in os.listdir(input_folder):
