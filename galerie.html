@@ -5,88 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jeremy POUCH - Galerie</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="ressources/logo.ico">
 </head>
 <body>
 
   <!-- NAVIGATION -->
   <nav class="navbar at-top">
-    <div class="logo">Jeremy POUCH</div>
-    <button class="burger-menu" aria-label="Ouvrir le menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="logo">JP</div>
     <ul class="nav-links">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="#gallery">Galerie</a></li>
       <li><a href="mensurations.html">Mensurations</a></li>
     </ul>
+    <button class="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Accueil</a>
+    <a href="#gallery">Galerie</a>
+    <a href="mensurations.html">Mensurations</a>
+  </div>
+
   <!-- HERO -->
-  <header class="hero small-hero">
+  <header class="hero hero-small">
     <video autoplay muted loop playsinline class="hero-video">
       <source src="ressources/video.mp4" type="video/mp4">
     </video>
-    <div class="overlay"></div>
-    <div class="hero-text">
-      <h1>Galerie</h1>
-      <p>Découvrez mes shootings</p>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-tag">Portfolio</p>
+      <h1 class="hero-title">Galerie</h1>
     </div>
   </header>
 
-  <!-- MAIN -->
   <main>
-    <section id="gallery" class="gallery-section">
-      <h2 class="reveal">Mes shootings</h2>
+    <section id="gallery" class="section">
+      <div class="container container-wide">
+        <h2 class="reveal">Mes shootings</h2>
 
-      <div class="shooting-wrapper">
+        <div class="gallery-layout">
 
-        <!-- NAVIGATION -->
-        <nav class="shooting-nav">
-          <ul>
-            <li><a href="#shooting-fall2025">Fall 2025</a></li>
-            <li><a href="#shooting-boite">Monde de la nuit</a></li>
-            <li><a href="#shooting-douce-france">Douce France</a></li>
-            <li><a href="#shooting-limoges">Du lin et du coton</a></li>
-            <li><a href="#shooting-brive">Street</a></li>
-            <li><a href="#shooting-studio">New York</a></li>
-          </ul>
-        </nav>
+          <nav class="gallery-nav" id="gallery-nav">
+            <ul>
+              <li><a href="#shooting-fall2025">Fall 2025</a></li>
+              <li><a href="#shooting-boite">Monde de la nuit</a></li>
+              <li><a href="#shooting-douce-france">Douce France</a></li>
+              <li><a href="#shooting-limoges">Du lin et du coton</a></li>
+              <li><a href="#shooting-brive">Street</a></li>
+              <li><a href="#shooting-studio">New York</a></li>
+            </ul>
+          </nav>
 
-        <!-- CONTENT -->
-        <div class="shooting-content">
-
-          <div class="shooting" id="shooting-fall2025">
-            <h3>Shooting « Fall 2025 »</h3>
-            <div class="gallery-grid" id="shooting-fall2025-grid"></div>
+          <div class="gallery-content">
+            <div class="shooting" id="shooting-fall2025">
+              <h3>Shooting « Fall 2025 »</h3>
+              <div class="grid" id="shooting-fall2025-grid"></div>
+            </div>
+            <div class="shooting" id="shooting-boite">
+              <h3>Shooting « Monde de la nuit »</h3>
+              <div class="grid" id="shooting-boite-grid"></div>
+            </div>
+            <div class="shooting" id="shooting-douce-france">
+              <h3>Shooting « Douce France »</h3>
+              <div class="grid" id="shooting-douce-france-grid"></div>
+            </div>
+            <div class="shooting" id="shooting-limoges">
+              <h3>Shooting « Du lin et du coton »</h3>
+              <div class="grid" id="shooting-limoges-grid"></div>
+            </div>
+            <div class="shooting" id="shooting-brive">
+              <h3>Shooting « Street »</h3>
+              <div class="grid" id="shooting-brive-grid"></div>
+            </div>
+            <div class="shooting" id="shooting-studio">
+              <h3>Shooting « New York »</h3>
+              <div class="grid" id="shooting-studio-grid"></div>
+            </div>
           </div>
-
-          <div class="shooting" id="shooting-boite">
-            <h3>Shooting « Monde de la nuit »</h3>
-            <div class="gallery-grid" id="shooting-boite-grid"></div>
-          </div>
-
-          <div class="shooting" id="shooting-douce-france">
-            <h3>Shooting « Douce France »</h3>
-            <div class="gallery-grid" id="shooting-douce-france-grid"></div>
-          </div>
-
-          <div class="shooting" id="shooting-limoges">
-            <h3>Shooting « Du lin et du coton »</h3>
-            <div class="gallery-grid" id="shooting-limoges-grid"></div>
-          </div>
-
-          <div class="shooting" id="shooting-brive">
-            <h3>Shooting « Street »</h3>
-            <div class="gallery-grid" id="shooting-brive-grid"></div>
-          </div>
-
-          <div class="shooting" id="shooting-studio">
-            <h3>Shooting « New York »</h3>
-            <div class="gallery-grid" id="shooting-studio-grid"></div>
-          </div>
-
         </div>
       </div>
     </section>
@@ -94,22 +92,19 @@
 
   <!-- MODAL -->
   <div id="image-modal" class="modal">
-    <span class="close">&times;</span>
-    <button class="modal-nav modal-prev" aria-label="Image précédente">&#8249;</button>
-    <button class="modal-nav modal-next" aria-label="Image suivante">&#8250;</button>
-    <img class="modal-content" id="modal-img">
+    <button class="modal-close" aria-label="Fermer">&times;</button>
+    <button class="modal-arrow modal-prev" aria-label="Précédent">&#8249;</button>
+    <button class="modal-arrow modal-next" aria-label="Suivant">&#8250;</button>
+    <img class="modal-img" id="modal-img" alt="">
   </div>
 
-  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2026 Jeremy POUCH. Tous droits réservés.</p>
+    <p>&copy; 2026 Jeremy POUCH</p>
   </footer>
 
-  <!-- SCRIPTS -->
   <script src="script.js"></script>
   <script>
   document.addEventListener("DOMContentLoaded", function () {
-
     const shootings = {
       "shooting-fall2025-grid": { path: "ressources/galerie/fall2025", prefix: "fall2025", count: 98 },
       "shooting-brive-grid": { path: "ressources/galerie/brive", prefix: "brive", count: 9 },
@@ -119,12 +114,10 @@
       "shooting-boite-grid": { path: "ressources/galerie/boite", prefix: "boite", count: 26 }
     };
 
-    // Collect all images for modal navigation
     const allImages = [];
 
     for (const [id, { path, prefix, count }] of Object.entries(shootings)) {
       const gallery = document.getElementById(id);
-
       for (let i = 1; i <= count; i++) {
         const img = document.createElement("img");
         img.src = `${path}/thumbs/${prefix} (${i}).jpg`;
@@ -144,8 +137,7 @@
         };
 
         img.onclick = function () {
-          const idx = allImages.indexOf(this);
-          openModal(idx);
+          openModal(allImages.indexOf(this));
         };
 
         gallery.appendChild(img);
@@ -153,100 +145,75 @@
       }
     }
 
-    // Scroll reveal for gallery images
-    const imgObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          imgObserver.unobserve(entry.target);
+    // Image reveal
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add("visible");
+          obs.unobserve(e.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05 });
+    document.querySelectorAll(".grid img").forEach(img => obs.observe(img));
 
-    document.querySelectorAll(".gallery-grid img").forEach(img => imgObserver.observe(img));
-
-    // Modal with navigation
+    // Modal
     const modal = document.getElementById("image-modal");
     const modalImg = document.getElementById("modal-img");
-    const closeBtn = document.querySelector(".close");
-    const prevBtn = document.querySelector(".modal-prev");
-    const nextBtn = document.querySelector(".modal-next");
-    let currentIndex = 0;
+    let currentIdx = 0;
 
     function openModal(idx) {
-      currentIndex = idx;
-      modal.style.display = "flex";
+      currentIdx = idx;
       modalImg.src = allImages[idx].dataset.full;
+      modal.classList.add("open");
       document.body.style.overflow = "hidden";
     }
-
     function closeModal() {
-      modal.style.display = "none";
+      modal.classList.remove("open");
       document.body.style.overflow = "";
     }
-
-    function showPrev() {
-      currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
-      modalImg.src = allImages[currentIndex].dataset.full;
+    function goPrev() {
+      currentIdx = (currentIdx - 1 + allImages.length) % allImages.length;
+      modalImg.src = allImages[currentIdx].dataset.full;
+    }
+    function goNext() {
+      currentIdx = (currentIdx + 1) % allImages.length;
+      modalImg.src = allImages[currentIdx].dataset.full;
     }
 
-    function showNext() {
-      currentIndex = (currentIndex + 1) % allImages.length;
-      modalImg.src = allImages[currentIndex].dataset.full;
-    }
-
-    closeBtn.onclick = closeModal;
-    prevBtn.onclick = showPrev;
-    nextBtn.onclick = showNext;
+    document.querySelector(".modal-close").onclick = closeModal;
+    document.querySelector(".modal-prev").onclick = goPrev;
+    document.querySelector(".modal-next").onclick = goNext;
     modal.onclick = (e) => { if (e.target === modal) closeModal(); };
 
-    // Keyboard navigation
     document.addEventListener("keydown", (e) => {
-      if (modal.style.display !== "flex") return;
+      if (!modal.classList.contains("open")) return;
       if (e.key === "Escape") closeModal();
-      if (e.key === "ArrowLeft") showPrev();
-      if (e.key === "ArrowRight") showNext();
+      if (e.key === "ArrowLeft") goPrev();
+      if (e.key === "ArrowRight") goNext();
     });
 
-    // Touch swipe support
-    let touchStartX = 0;
-    modal.addEventListener("touchstart", (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
+    let tx = 0;
+    modal.addEventListener("touchstart", (e) => { tx = e.changedTouches[0].screenX; }, { passive: true });
     modal.addEventListener("touchend", (e) => {
-      const diff = e.changedTouches[0].screenX - touchStartX;
-      if (Math.abs(diff) > 50) {
-        if (diff > 0) showPrev();
-        else showNext();
-      }
+      const d = e.changedTouches[0].screenX - tx;
+      if (Math.abs(d) > 50) d > 0 ? goPrev() : goNext();
     }, { passive: true });
 
-  });
-
-  // Scroll spy for shooting nav
-  const sections = document.querySelectorAll(".shooting");
-  const navLinks = document.querySelectorAll(".shooting-nav a");
-
-  window.addEventListener("scroll", () => {
-    let current = "";
-    sections.forEach(sec => {
-      const top = window.scrollY;
-      const offset = sec.offsetTop - 200;
-      const height = sec.offsetHeight;
-      if (top >= offset && top < offset + height) {
-        current = sec.getAttribute("id");
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === `#${current}`) {
-        link.classList.add("active");
-      }
-    });
+    // Scroll spy
+    const sections = document.querySelectorAll(".shooting");
+    const navA = document.querySelectorAll(".gallery-nav a");
+    window.addEventListener("scroll", () => {
+      let cur = "";
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 200 && window.scrollY < s.offsetTop + s.offsetHeight - 200) {
+          cur = s.id;
+        }
+      });
+      navA.forEach(a => {
+        a.classList.toggle("active", a.getAttribute("href") === `#${cur}`);
+      });
+    }, { passive: true });
   });
   </script>
-
 </body>
 </html>

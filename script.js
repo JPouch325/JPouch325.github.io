@@ -1,76 +1,59 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  // ============================================
-  // NAVBAR — Glassmorphism on scroll
-  // ============================================
+  /* ── Navbar: transparent on hero, glass on scroll ── */
   const navbar = document.querySelector(".navbar");
   const hero = document.querySelector(".hero");
 
-  function updateNavbar() {
+  function onScroll() {
     if (!hero) return;
-    const heroBottom = hero.offsetHeight - 80;
-    if (window.scrollY > heroBottom) {
-      navbar.classList.remove("at-top");
-    } else {
-      navbar.classList.add("at-top");
-    }
+    const past = window.scrollY > hero.offsetHeight - 60;
+    navbar.classList.toggle("at-top", !past);
   }
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
 
-  updateNavbar();
-  window.addEventListener("scroll", updateNavbar, { passive: true });
+  /* ── Burger menu ── */
+  const burger = document.querySelector(".burger");
+  const mobileMenu = document.getElementById("mobile-menu");
 
-  // ============================================
-  // BURGER MENU — Mobile fullscreen nav
-  // ============================================
-  const burgerMenu = document.querySelector(".burger-menu");
-  const navLinks = document.querySelector(".nav-links");
-
-  if (burgerMenu && navLinks) {
-    burgerMenu.addEventListener("click", function () {
-      this.classList.toggle("open");
-      navLinks.classList.toggle("open");
-      // Prevent body scroll when menu is open
-      document.body.style.overflow = navLinks.classList.contains("open") ? "hidden" : "";
+  if (burger && mobileMenu) {
+    burger.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const isOpen = mobileMenu.classList.toggle("open");
+      burger.classList.toggle("open", isOpen);
+      document.body.style.overflow = isOpen ? "hidden" : "";
     });
 
-    // Close menu when clicking a link
-    navLinks.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        burgerMenu.classList.remove("open");
-        navLinks.classList.remove("open");
+    // Close when a link is tapped
+    mobileMenu.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        mobileMenu.classList.remove("open");
+        burger.classList.remove("open");
         document.body.style.overflow = "";
       });
     });
 
-    // Reset on resize
+    // Close on resize to desktop
     window.addEventListener("resize", function () {
-      if (window.innerWidth >= 901) {
-        burgerMenu.classList.remove("open");
-        navLinks.classList.remove("open");
+      if (window.innerWidth > 900) {
+        mobileMenu.classList.remove("open");
+        burger.classList.remove("open");
         document.body.style.overflow = "";
       }
     });
   }
 
-  // ============================================
-  // SCROLL REVEAL ANIMATIONS
-  // ============================================
-  const revealElements = document.querySelectorAll(".reveal");
-
-  if (revealElements.length > 0) {
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          revealObserver.unobserve(entry.target);
+  /* ── Scroll reveal ── */
+  var reveals = document.querySelectorAll(".reveal");
+  if (reveals.length) {
+    var revObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add("visible");
+          revObs.unobserve(e.target);
         }
       });
-    }, {
-      threshold: 0.15,
-      rootMargin: "0px 0px -40px 0px"
-    });
-
-    revealElements.forEach(el => revealObserver.observe(el));
+    }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
+    reveals.forEach(function (el) { revObs.observe(el); });
   }
-
 });

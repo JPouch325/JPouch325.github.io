@@ -5,65 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jeremy POUCH - Mensurations</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="ressources/logo.ico">
 </head>
 <body>
 
   <!-- NAVIGATION -->
   <nav class="navbar at-top">
-    <div class="logo">Jeremy POUCH</div>
-    <button class="burger-menu" aria-label="Ouvrir le menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="logo">JP</div>
     <ul class="nav-links">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="galerie.html">Galerie</a></li>
       <li><a href="mensurations.html">Mensurations</a></li>
     </ul>
+    <button class="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Accueil</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="mensurations.html">Mensurations</a>
+  </div>
+
   <!-- HERO -->
-  <header class="hero small-hero">
+  <header class="hero hero-small">
     <video autoplay muted loop playsinline class="hero-video">
       <source src="ressources/video.mp4" type="video/mp4">
     </video>
-    <div class="overlay"></div>
-    <div class="hero-text">
-      <h1>Mensurations</h1>
-      <p>Détails précis et complets</p>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-tag">Informations</p>
+      <h1 class="hero-title">Mensurations</h1>
     </div>
   </header>
 
-  <!-- MAIN -->
   <main>
-    <section class="mensurations">
-      <h2 class="reveal">Mes mensurations</h2>
-      <div class="mensuration-card reveal">
-        <ul class="mensuration-list">
-          <li><span class="label">Taille</span><span class="value">1.84m</span></li>
-          <li><span class="label">Bras gauche</span><span class="value">35.5cm</span></li>
-          <li><span class="label">Bras droit</span><span class="value">36cm</span></li>
-          <li><span class="label">Cuisse gauche</span><span class="value">54.5cm</span></li>
-          <li><span class="label">Cuisse droite</span><span class="value">54.5cm</span></li>
-          <li><span class="label">Tour de taille</span><span class="value">90cm</span></li>
-          <li><span class="label">Largeur d'épaules</span><span class="value">54cm</span></li>
-          <li><span class="label">Taille de pieds</span><span class="value">45-46</span></li>
-          <li><span class="label">Main droite</span><span class="value">20cm</span></li>
-          <li><span class="label">Main gauche</span><span class="value">20cm</span></li>
-          <li><span class="label">Tour de cou</span><span class="value">41cm</span></li>
-        </ul>
+    <section class="section">
+      <div class="container">
+        <h2 class="reveal">Mes mensurations</h2>
+        <div class="measure-card reveal">
+          <ul class="measure-list">
+            <li><span class="ml">Taille</span><span class="mv">1.84m</span></li>
+            <li><span class="ml">Bras gauche</span><span class="mv">35.5cm</span></li>
+            <li><span class="ml">Bras droit</span><span class="mv">36cm</span></li>
+            <li><span class="ml">Cuisse gauche</span><span class="mv">54.5cm</span></li>
+            <li><span class="ml">Cuisse droite</span><span class="mv">54.5cm</span></li>
+            <li><span class="ml">Tour de taille</span><span class="mv">90cm</span></li>
+            <li><span class="ml">Largeur d'épaules</span><span class="mv">54cm</span></li>
+            <li><span class="ml">Taille de pieds</span><span class="mv">45-46</span></li>
+            <li><span class="ml">Main droite</span><span class="mv">20cm</span></li>
+            <li><span class="ml">Main gauche</span><span class="mv">20cm</span></li>
+            <li><span class="ml">Tour de cou</span><span class="mv">41cm</span></li>
+          </ul>
+        </div>
+        <p class="measure-note reveal">Mensurations prises le <strong>17 mars 2026</strong>.</p>
+        <p class="measure-contact reveal">
+          Pour plus d'informations : <a href="mailto:contact@jeremypouch.fr">contact@jeremypouch.fr</a>
+        </p>
       </div>
-      <p class="note reveal">Mensurations prises le <strong>17 mars 2026</strong>.</p>
-      <p class="contact reveal">
-        Pour plus d'informations : <a href="mailto:contact@jeremypouch.fr">contact@jeremypouch.fr</a>
-      </p>
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2026 Jeremy POUCH. Tous droits réservés.</p>
+    <p>&copy; 2026 Jeremy POUCH</p>
   </footer>
 
   <script src="script.js"></script>

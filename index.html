@@ -5,121 +5,124 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jeremy POUCH</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="ressources/logo.ico">
 </head>
 <body>
 
   <!-- NAVIGATION -->
   <nav class="navbar at-top">
-    <div class="logo">Jeremy POUCH</div>
-    <button class="burger-menu" aria-label="Ouvrir le menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="logo">JP</div>
     <ul class="nav-links">
       <li><a href="#">Accueil</a></li>
       <li><a href="galerie.html">Galerie</a></li>
       <li><a href="mensurations.html">Mensurations</a></li>
     </ul>
+    <button class="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- MOBILE MENU (outside navbar to avoid backdrop-filter bug) -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#">Accueil</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="mensurations.html">Mensurations</a>
+  </div>
 
   <!-- HERO -->
   <header class="hero">
     <video autoplay muted loop playsinline class="hero-video">
       <source src="ressources/video.mp4" type="video/mp4">
     </video>
-    <div class="overlay"></div>
-    <div class="hero-text">
-      <h1>Jeremy POUCH</h1>
-      <p>Mannequin & Passionné de mode</p>
-    </div>
-    <div class="scroll-indicator">
-      <span>Scroll</span>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-tag">Mannequin & Modèle</p>
+      <h1 class="hero-title">Jeremy<br>POUCH</h1>
     </div>
   </header>
 
-  <!-- ABOUT -->
   <main>
+
+    <!-- ABOUT -->
     <section class="section">
       <div class="container">
         <h2 class="reveal">À propos</h2>
-        <p class="section-subtitle reveal">22 ans, entre élégance et authenticité.</p>
-        <div class="about-content">
+        <p class="section-sub reveal">22 ans, entre élégance et authenticité.</p>
+        <div class="prose">
           <p class="reveal">Je m'appelle <strong>Jeremy POUCH</strong> et je suis passionné par l'univers de la mode. Depuis toujours, j'ai été attiré par l'idée de pouvoir exprimer ma personnalité et mes émotions à travers l'image. C'est pourquoi j'ai décidé de me lancer dans une carrière de mannequin.</p>
-          <p class="reveal">Mon objectif est de me faire connaître dans ce domaine et de travailler avec des marques et créateurs pour représenter leurs visions de manière authentique et professionnelle. Mon style unique et ma capacité à m'adapter aux différentes demandes des séances photo me permettent de me démarquer dans ce milieu.</p>
+          <p class="reveal">Mon objectif est de me faire connaître dans ce domaine et de travailler avec des marques et créateurs pour représenter leurs visions de manière authentique et professionnelle.</p>
           <p class="reveal">Je suis convaincu que la confiance en soi et la persévérance sont des clés essentielles pour réussir en tant que mannequin, et je suis prêt à relever tous les défis pour atteindre mes objectifs.</p>
         </div>
       </div>
     </section>
 
     <!-- PROJECTS -->
-    <section class="section" style="background: var(--color-bg-alt);">
+    <section class="section section-alt">
       <div class="container">
         <h2 class="reveal">Mes Projets</h2>
-        <p class="section-subtitle reveal">Les ambitions qui guident ma carrière.</p>
-        <div class="card-grid stagger-children">
+        <p class="section-sub reveal">Les ambitions qui guident ma carrière.</p>
+        <div class="cards">
           <div class="card reveal">
-            <span class="card-icon">📷</span>
+            <div class="card-badge">Photographie</div>
             <h3>Modèle photo</h3>
-            <p>Je souhaite m'imposer dans le monde de la photographie en tant que modèle pour magazines et publicités. Mon objectif est de collaborer avec des marques renommées et des agences créatives pour représenter des univers variés, alliant élégance et authenticité.</p>
+            <p>Je souhaite m'imposer dans le monde de la photographie en tant que modèle pour magazines et publicités. Mon objectif est de collaborer avec des marques renommées et des agences créatives.</p>
           </div>
           <div class="card reveal">
-            <span class="card-icon">✨</span>
+            <div class="card-badge">Mode</div>
             <h3>Mannequinat</h3>
-            <p>Je souhaite construire une carrière polyvalente dans la mode et le mannequinat, combinant des rôles variés tels que modèle, ambassadeur de marques et créateur d'opportunités pour d'autres talents. Cette vision globale me permettrait de m'épanouir tout en contribuant activement à l'industrie.</p>
+            <p>Je souhaite construire une carrière polyvalente dans la mode et le mannequinat, combinant des rôles variés tels que modèle, ambassadeur de marques et créateur d'opportunités.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- EXPERIENCES -->
-    <section class="section">
+    <section class="section section-dark">
       <div class="container">
-        <h2 class="reveal">Mes Expériences</h2>
-        <p class="section-subtitle reveal">Des moments clés qui ont forgé mon parcours.</p>
-        <div class="card-grid stagger-children">
-          <div class="card reveal">
-            <span class="card-icon">🕴</span>
+        <h2 class="reveal">Expériences</h2>
+        <p class="section-sub reveal">Des moments clés qui ont forgé mon parcours.</p>
+        <div class="cards">
+          <div class="card card-glass reveal">
+            <div class="card-badge">Podium</div>
             <h3>Défilé pour un comité de Miss</h3>
-            <p>J'ai eu l'opportunité de participer à un défilé organisé par un comité de Miss. Cette expérience m'a permis de me confronter à l'univers du podium, de travailler ma prestance, ma démarche et ma gestion du regard face au public.</p>
+            <p>Participation à un défilé organisé par un comité de Miss. Travail de la prestance, de la démarche et de la gestion du regard face au public.</p>
           </div>
-          <div class="card reveal">
-            <span class="card-icon">👑</span>
-            <h3>Élu Mister France Midi-Pyrénées</h3>
-            <p>J'ai eu l'honneur de remporter le titre de <strong>Mister France Midi-Pyrénées</strong>, une étape déterminante dans mon parcours. Ce titre représente l'aboutissement d'un travail personnel exigeant mêlant discipline, image, éloquence et engagement.</p>
+          <div class="card card-glass reveal">
+            <div class="card-badge">Titre</div>
+            <h3>Mister France Midi-Pyrénées</h3>
+            <p>L'honneur de remporter le titre de <strong>Mister France Midi-Pyrénées</strong>, aboutissement d'un travail mêlant discipline, image, éloquence et engagement.</p>
           </div>
-          <div class="card reveal">
-            <span class="card-icon">📸</span>
-            <h3>Shooting photo – Concours Mister France</h3>
-            <p>Dans le cadre du concours Mister France, j'ai réalisé plusieurs shootings photos et défilés aussi bien au niveau régional que national. Ces expériences m'ont permis de développer ma polyvalence face à l'objectif et d'affirmer mon identité visuelle.</p>
+          <div class="card card-glass reveal">
+            <div class="card-badge">Shooting</div>
+            <h3>Concours Mister France</h3>
+            <p>Plusieurs shootings photos et défilés au niveau régional et national. Développement de la polyvalence face à l'objectif et affirmation de l'identité visuelle.</p>
           </div>
-          <div class="card reveal">
-            <span class="card-icon">🎀</span>
+          <div class="card card-glass reveal">
+            <div class="card-badge">Jury</div>
             <h3>Jury pour un comité de Miss</h3>
-            <p>J'ai également été membre du jury pour un comité de Miss. Cette responsabilité m'a permis d'évaluer des candidates sur des critères tels que la prestance, l'expression, la confiance en soi et la présentation générale.</p>
+            <p>Évaluation de candidates sur des critères tels que la prestance, l'expression, la confiance en soi et la présentation générale.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section class="contact-section">
-      <h2 class="reveal">Contact</h2>
-      <p class="section-subtitle reveal">Envie de collaborer ? N'hésitez pas.</p>
-      <div class="contact-links reveal">
-        <a href="mailto:contact@jeremypouch.fr" class="contact-link primary">
-          ✉ contact@jeremypouch.fr
-        </a>
-        <a href="https://instagram.com/jeremypouch" target="_blank" rel="noopener" class="contact-link secondary">
-          @ jeremypouch
-        </a>
+    <section class="section section-alt">
+      <div class="container contact-block">
+        <h2 class="reveal">Contact</h2>
+        <p class="section-sub reveal">Envie de collaborer ? N'hésitez pas.</p>
+        <div class="contact-btns reveal">
+          <a href="mailto:contact@jeremypouch.fr" class="btn btn-primary">contact@jeremypouch.fr</a>
+          <a href="https://instagram.com/jeremypouch" target="_blank" rel="noopener" class="btn btn-outline">@jeremypouch</a>
+        </div>
       </div>
     </section>
+
   </main>
 
-  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2026 Jeremy POUCH. Tous droits réservés.</p>
+    <p>&copy; 2026 Jeremy POUCH</p>
   </footer>
 
   <script src="script.js"></script>
