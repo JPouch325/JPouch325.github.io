@@ -5,30 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jeremy POUCH - Galerie</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Quicksand:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="ressources/logo.ico">
 </head>
-
 <body>
 
-  <!-- HEADER -->
+  <!-- NAVIGATION -->
+  <nav class="navbar at-top">
+    <div class="logo">Jeremy POUCH</div>
+    <button class="burger-menu" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="#gallery">Galerie</a></li>
+      <li><a href="mensurations.html">Mensurations</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
   <header class="hero small-hero">
     <video autoplay muted loop playsinline class="hero-video">
       <source src="ressources/video.mp4" type="video/mp4">
-      Votre navigateur ne supporte pas la vidéo de fond.
     </video>
     <div class="overlay"></div>
-    <nav class="navbar">
-      <div class="logo">Jeremy POUCH</div>
-      <button class="burger-menu" aria-label="Ouvrir le menu">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links">
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="#gallery">Galerie</a></li>
-        <li><a href="mensurations.html">Mensurations</a></li>
-      </ul>
-    </nav>
     <div class="hero-text">
       <h1>Galerie</h1>
       <p>Découvrez mes shootings</p>
@@ -37,8 +37,8 @@
 
   <!-- MAIN -->
   <main>
-    <section id="gallery" class="container fade-in">
-      <h2>Mes shootings</h2>
+    <section id="gallery" class="gallery-section">
+      <h2 class="reveal">Mes shootings</h2>
 
       <div class="shooting-wrapper">
 
@@ -89,22 +89,23 @@
 
         </div>
       </div>
-
     </section>
   </main>
 
   <!-- MODAL -->
   <div id="image-modal" class="modal">
     <span class="close">&times;</span>
+    <button class="modal-nav modal-prev" aria-label="Image précédente">&#8249;</button>
+    <button class="modal-nav modal-next" aria-label="Image suivante">&#8250;</button>
     <img class="modal-content" id="modal-img">
   </div>
 
   <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 Jeremy POUCH. Tous droits réservés.</p>
+    <p>&copy; 2026 Jeremy POUCH. Tous droits réservés.</p>
   </footer>
 
-  <!-- SCRIPT -->
+  <!-- SCRIPTS -->
   <script src="script.js"></script>
   <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -118,6 +119,9 @@
       "shooting-boite-grid": { path: "ressources/galerie/boite", prefix: "boite", count: 26 }
     };
 
+    // Collect all images for modal navigation
+    const allImages = [];
+
     for (const [id, { path, prefix, count }] of Object.entries(shootings)) {
       const gallery = document.getElementById(id);
 
@@ -128,7 +132,6 @@
         img.dataset.altjpeg = `${path}/thumbs/${prefix} (${i}).jpeg`;
         img.dataset.fulljpeg = `${path}/${prefix} (${i}).jpeg`;
         img.alt = `${prefix} ${i}`;
-        img.classList.add("gallery-img", "hidden");
         img.loading = "lazy";
 
         img.onerror = function () {
@@ -140,50 +143,97 @@
           }
         };
 
-        img.onclick = function () { openModal(this.dataset.full); };
+        img.onclick = function () {
+          const idx = allImages.indexOf(this);
+          openModal(idx);
+        };
+
         gallery.appendChild(img);
+        allImages.push(img);
       }
     }
 
-    // Scroll fade-in
-    const observer = new IntersectionObserver((entries) => {
+    // Scroll reveal for gallery images
+    const imgObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("fade-in");
-          entry.target.classList.remove("hidden");
-          observer.unobserve(entry.target);
+          entry.target.classList.add("visible");
+          imgObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.1 });
 
-    document.querySelectorAll(".gallery-img").forEach(img => observer.observe(img));
+    document.querySelectorAll(".gallery-grid img").forEach(img => imgObserver.observe(img));
 
-    // Modal
+    // Modal with navigation
     const modal = document.getElementById("image-modal");
     const modalImg = document.getElementById("modal-img");
-    const closeModal = document.querySelector(".close");
+    const closeBtn = document.querySelector(".close");
+    const prevBtn = document.querySelector(".modal-prev");
+    const nextBtn = document.querySelector(".modal-next");
+    let currentIndex = 0;
 
-    function openModal(src) {
+    function openModal(idx) {
+      currentIndex = idx;
       modal.style.display = "flex";
-      modalImg.src = src;
+      modalImg.src = allImages[idx].dataset.full;
+      document.body.style.overflow = "hidden";
     }
 
-    closeModal.onclick = () => modal.style.display = "none";
-    modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+    function closeModal() {
+      modal.style.display = "none";
+      document.body.style.overflow = "";
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
+      modalImg.src = allImages[currentIndex].dataset.full;
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % allImages.length;
+      modalImg.src = allImages[currentIndex].dataset.full;
+    }
+
+    closeBtn.onclick = closeModal;
+    prevBtn.onclick = showPrev;
+    nextBtn.onclick = showNext;
+    modal.onclick = (e) => { if (e.target === modal) closeModal(); };
+
+    // Keyboard navigation
+    document.addEventListener("keydown", (e) => {
+      if (modal.style.display !== "flex") return;
+      if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowLeft") showPrev();
+      if (e.key === "ArrowRight") showNext();
+    });
+
+    // Touch swipe support
+    let touchStartX = 0;
+    modal.addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    modal.addEventListener("touchend", (e) => {
+      const diff = e.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) showPrev();
+        else showNext();
+      }
+    }, { passive: true });
 
   });
 
+  // Scroll spy for shooting nav
   const sections = document.querySelectorAll(".shooting");
   const navLinks = document.querySelectorAll(".shooting-nav a");
 
   window.addEventListener("scroll", () => {
     let current = "";
-
     sections.forEach(sec => {
       const top = window.scrollY;
-      const offset = sec.offsetTop - 200; // seuil
+      const offset = sec.offsetTop - 200;
       const height = sec.offsetHeight;
-
       if (top >= offset && top < offset + height) {
         current = sec.getAttribute("id");
       }
@@ -191,7 +241,6 @@
 
     navLinks.forEach(link => {
       link.classList.remove("active");
-
       if (link.getAttribute("href") === `#${current}`) {
         link.classList.add("active");
       }
