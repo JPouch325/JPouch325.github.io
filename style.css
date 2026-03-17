@@ -107,6 +107,18 @@ img { display: block; max-width: 100%; }
   flex-direction: column; justify-content: center; align-items: center; gap: 8px;
 }
 .mobile-menu.open { display: flex; }
+
+.mobile-menu-close {
+  position: absolute; top: 12px; right: 12px;
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,.1); border: none; border-radius: 50%;
+  color: #fff; font-size: 1.6rem; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background .2s;
+}
+.mobile-menu-close:hover { background: rgba(255,255,255,.2); }
+
 .mobile-menu a {
   font-size: 1.6rem; font-weight: 600; color: #fff;
   padding: 14px 24px; border-radius: 14px;
