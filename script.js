@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Reset on resize
     window.addEventListener("resize", function () {
-      if (window.innerWidth >= 769) {
+      if (window.innerWidth >= 901) {
         burgerMenu.classList.remove("open");
         navLinks.classList.remove("open");
         document.body.style.overflow = "";
