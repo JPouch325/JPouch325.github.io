@@ -182,7 +182,7 @@ img { display: block; max-width: 100%; }
 .container h2, .contact-block h2 {
   text-align: center;
   font-size: clamp(1.5rem, 5vw, 2.8rem);
-  margin-bottom: 6px;
+  margin-bottom: 24px;
 }
 .section-sub {
   text-align: center;
